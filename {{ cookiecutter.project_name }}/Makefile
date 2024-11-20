@@ -1,7 +1,7 @@
-export PWD=$(shell pwd)
-export PROJECT_NAME={{ cookiecutter.project_slug }}
-export IMAGE_NAME=$(PROJECT_NAME)-image
-export CONTAINER_NAME=$(PROJECT_NAME)-container
+PROJECT_NAME := {{ cookiecutter.project_slug }}
+IMAGE_NAME := $(PROJECT_NAME)-image
+CONTAINER_NAME := $(PROJECT_NAME)-container
+PWD := $(shell pwd)
 
 docker-build:
 	docker build -t $(IMAGE_NAME) -f Dockerfile .
