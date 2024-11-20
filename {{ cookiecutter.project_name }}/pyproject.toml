@@ -1,36 +1,48 @@
-[tool.poetry]
-name = "temp"
+[project]
+name = "{{ cookiecutter.project_name }}"
 version = "0.1.0"
-description = ""
-authors = ["None"]
+description = "Add your description here"
+dependencies = [
+    "click>=8.1.7",
+]
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-click = "^8.1.7"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.4.4"
-pysen = "^0.10.5"
-flake8 = "^7.0.0"
-isort = "^5.13.2"
-mypy = "^1.8.0"
-black = "^23.12.1"
-
-[tool.pysen]
-version = "0.10"
-
-[tool.pysen.lint]
-enable_black = true
-enable_flake8 = true
-enable_isort = true
-enable_mypy = true
-mypy_preset = "strict"
-line_length = 88
-py_version = "py37"
-[[tool.pysen.lint.mypy_targets]]
-  paths = ["scripts/", "tests/"]
+requires-python = ">= 3.10"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "mypy>=1.13.0",
+    "pytest>=8.3.3",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/work"]
+
+[tool.ruff]
+line-length = 88
+lint.select = [
+    "F", # pyflakes
+    "E", # pycodestyle
+    "W", # pycodestyle warnings
+    "I", # isort
+    "D", # pydocstyle
+]
+lint.ignore = [
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+    "D203", # 1 blank line required before class docstring
+]
+
+[tool.mypy]
+files = ["scripts", "tests"]
+strict = true
+ignore_missing_imports = true
