@@ -46,3 +46,8 @@ lint.ignore = [
 files = ["scripts", "tests"]
 strict = true
 ignore_missing_imports = true
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+]
