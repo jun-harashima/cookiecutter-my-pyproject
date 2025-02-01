@@ -2,5 +2,13 @@
     "project_name": "project-name",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "organization_name": "jun-harashima",
-    "your_name": "Jun Harashima"
+    "your_name": "Jun Harashima",
+    "git_push": true,
+    "__prompts__": {
+	"project_name": "Enter your project name",
+	"project_slug": "Enter a Python package-friendly version of the project name",
+        "organization_name": "Enter your GitHub organization name",
+        "your_name": "Enter your GitHub username",
+	"git_push": "Push to GitHub after creating the project?"
+    }
 }
