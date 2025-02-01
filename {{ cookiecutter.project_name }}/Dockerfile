@@ -13,7 +13,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh \
     && /root/.local/bin/uv sync --no-install-project
 
 COPY Makefile ./
-COPY scripts/ scripts/
+COPY src/ src/
 COPY tests/ tests/
 
 CMD ["/bin/bash"]
